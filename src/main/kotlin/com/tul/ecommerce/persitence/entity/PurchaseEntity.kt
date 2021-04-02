@@ -1,18 +1,21 @@
 package com.tul.ecommerce.persitence.entity
 
+import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
+import java.util.*
 import javax.persistence.*
 
 @Entity
 @Table(name = "purchase")
 data class PurchaseEntity(
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id_purchase")
-        val idPurchase: Int?,
+        @GeneratedValue(generator = "uuid2")
+        @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+        @Column(name = "id_purchase",columnDefinition = "BINARY(16)")
+        val idPurchase: UUID?,
 
         @Column(name = "id_customer")
-        val idCustomer: Int,
+        val idCustomer: UUID,
 
         @Column(name = "date_purchase")
         val date: LocalDateTime,

@@ -5,7 +5,8 @@ import com.tul.ecommerce.domain.ResponseDetailPurchase
 import com.tul.ecommerce.persitence.entity.PurchaseEntity
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
+import java.util.*
 import javax.persistence.EntityManager
 
-interface PurchaseCrudRepository: CrudRepository<PurchaseEntity, Int>{
+interface PurchaseCrudRepository: CrudRepository<PurchaseEntity, UUID>{
 }

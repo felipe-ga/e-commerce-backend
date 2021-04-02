@@ -1,19 +1,20 @@
 package com.tul.ecommerce.domain
 
 import java.time.LocalDateTime
+import java.util.*
 
 class Purchase {
-    private var idCustomer: Int = 0;
+    private var idCustomer: UUID = UUID.randomUUID();
     private var date: LocalDateTime = LocalDateTime.now();
     private var paymentMethod: String = "T";
     private var comment: String = "";
     private var status: Int = 0;
     private var products: List<PurchaseItem> = listOf();
 
-    fun getIdCustomer():Int{
+    fun getIdCustomer():UUID{
         return this.idCustomer;
     }
-    fun setIdCustomer(idCustomer: Int){
+    fun setIdCustomer(idCustomer: UUID){
         this.idCustomer = idCustomer;
     }
 

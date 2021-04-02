@@ -18,11 +18,11 @@ class ProductRepositoryImpl(@Autowired private val productCrudRepository: Produc
         return productCrudRepository.save(product);
     }
 
-    override fun findById(id: Int): Optional<Product> {
+    override fun findById(id: UUID): Optional<Product> {
         return productCrudRepository.findById(id);
     }
 
-    override fun deleteById(id: Int) {
+    override fun deleteById(id: UUID) {
         productCrudRepository.deleteById(id);
     }
 }

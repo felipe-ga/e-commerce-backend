@@ -6,6 +6,7 @@ import com.tul.ecommerce.persitence.entity.Category
 import com.tul.ecommerce.persitence.entity.Product
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class CategoryService(@Autowired private var categoryRepository: CategoryRepository) {
@@ -14,5 +15,8 @@ class CategoryService(@Autowired private var categoryRepository: CategoryReposit
     }
     fun save(category: Category): Category{
         return  categoryRepository.save(category);
+    }
+    fun findCategory(idCategory: UUID): Optional<Category> {
+        return categoryRepository.findById(idCategory);
     }
 }
