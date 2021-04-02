@@ -14,17 +14,20 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/purchase")
 class PurchaseController(@Autowired private val purchaseService: PurchaseService) {
 
+    @CrossOrigin
     @GetMapping("/")
     fun getAll(): ResponseEntity<List<PurchaseEntity>> {
         return ResponseEntity(purchaseService.getAll(),HttpStatus.OK);
     }
 
     @Transactional
+    @CrossOrigin
     @PostMapping("/")
     fun save(@RequestBody purchase: Purchase): ResponseEntity<PurchaseEntity>{
         return ResponseEntity(purchaseService.save(purchase),HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/getAllPurchasesByCustomer/{idcustomer}")
     fun getAllPurchasesByCustomer(@PathVariable("idcustomer") idcustomer:Int): ResponseEntity<List<PurchasesCustomersView>>{
         return ResponseEntity(purchaseService.getAllPurchasesAndProductsByCutomer(idcustomer),HttpStatus.OK);

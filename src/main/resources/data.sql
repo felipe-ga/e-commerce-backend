@@ -1,6 +1,6 @@
 drop table category;
 CREATE TABLE IF NOT EXISTS category (
-  id_category INT NOT NULL AUTO_INCREMENT,
+  id_category BINARY(16) NOT NULL,
  description VARCHAR(45) NULL,
  status TINYINT(1) NULL,
   PRIMARY KEY (id_category));
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS category (
   INSERT INTO category (id_category, description, status) VALUES (5, 'otros', 1);
 drop table unit;
 CREATE TABLE IF NOT EXISTS unit (
-  id_unit INT NOT NULL AUTO_INCREMENT,
+  id_unit BINARY(16) NOT NULL,
   name VARCHAR(45) NULL,
   status TINYINT(1) NULL,
   PRIMARY KEY (id_unit));
@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS unit (
 	drop table product;
 
   CREATE TABLE IF NOT EXISTS product (
-    id_product INT NOT NULL AUTO_INCREMENT,
-    id_category INT NOT NULL,
-    id_unit INT NOT NULL,
+    id_product BINARY(16) NOT NULL,
+    id_category BINARY(16) NOT NULL,
+    id_unit BINARY(16) NOT NULL,
     name_product VARCHAR(45) NULL,
     sku VARCHAR(45) NULL,
     description VARCHAR(45) NULL,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS unit (
     INSERT INTO product (id_product, id_category, id_unit, name_product, sku, description, price, status, stock, discount,img) VALUES (14, 5, 1, 'Lavadero de granito', 'otr-000003', 'lavadero', 250, 1, 100, 0, 'http://www.mndelgolfo.com/wp-content/uploads/2016/11/lavadero_granito_chico-768x768.jpg');
 drop table customer;
     CREATE TABLE IF NOT EXISTS customer (
-      id_customer INT NOT NULL AUTO_INCREMENT,
+      id_customer BINARY(16) NOT NULL,
       name VARCHAR(45) NULL,
       last_name VARCHAR(45) NULL,
       phone VARCHAR(45) NULL,
@@ -66,8 +66,8 @@ drop table customer;
       INSERT INTO customer (id_customer, name, last_name, phone, address, email, password) VALUES (1, 'GUESS', 'GUESS', '5523654584', 'GUESS', 'guess@gmail.com', 'dsfsdafds');
 drop table purchase;
 CREATE TABLE IF NOT EXISTS purchase (
-  id_purchase INT NOT NULL AUTO_INCREMENT,
-  id_customer INT NOT NULL,
+  id_purchase BINARY(16) NOT NULL,
+  id_customer BINARY(16) NOT NULL,
   date_purchase DATETIME NULL,
   payment_method CHAR(1) NULL,
   comments VARCHAR(3000) NULL,
@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS purchase (
 
 drop table purchases_products;
 CREATE TABLE IF NOT EXISTS purchases_products (
-  id_purchases_products INT NOT NULL AUTO_INCREMENT,
-  id_purchase INT NOT NULL,
-  id_product INT NOT NULL,
+  id_purchases_products BINARY(16) NOT NULL,
+  id_purchase BINARY(16) NOT NULL,
+  id_product BINARY(16) NOT NULL,
   quantity INT(15) NULL,
   total FLOAT(12,2) NULL,
   status TINYINT(1) NULL,

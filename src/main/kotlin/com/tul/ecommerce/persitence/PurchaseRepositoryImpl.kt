@@ -20,11 +20,11 @@ class PurchaseRepositoryImpl(@Autowired val purchacheCrudRepository: PurchaseCru
         return purchacheCrudRepository.save(purchase);
     }
 
-    override fun findById(id: Int): Optional<PurchaseEntity> {
+    override fun findById(id: UUID): Optional<PurchaseEntity> {
         return purchacheCrudRepository.findById(id);
     }
 
-    override fun deleteById(id: Int) {
+    override fun deleteById(id: UUID) {
         purchacheCrudRepository.deleteById(id);
     }
 }

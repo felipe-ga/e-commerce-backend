@@ -17,11 +17,11 @@ class CategoryRepositoryImpl(@Autowired private var categoryCrudRepository: Cate
         return categoryCrudRepository.save(category);
     }
 
-    override fun findById(id: Int): Optional<Category> {
+    override fun findById(id: UUID): Optional<Category> {
         return categoryCrudRepository.findById(id);
     }
 
-    override fun deleteById(id: Int) {
+    override fun deleteById(id: UUID) {
         categoryCrudRepository.deleteById(id);
     }
 }

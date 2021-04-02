@@ -8,6 +8,8 @@ import com.tul.ecommerce.persitence.entity.PurchasesCustomersView
 import com.tul.ecommerce.persitence.entity.PurchasesProducts
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
+import kotlin.collections.ArrayList
 
 @Service
 class PurchaseService(@Autowired val purchaseRepository: PurchaseRepository,@Autowired val purchasesProductsRepository: PurchasesProductsRepository) {
@@ -16,7 +18,7 @@ class PurchaseService(@Autowired val purchaseRepository: PurchaseRepository,@Aut
     }
     fun save(purchase: Purchase): PurchaseEntity {
         val purchaseEntity = PurchaseEntity(
-                null,
+                UUID.randomUUID(),
                 purchase.getIdCustomer(),
                 purchase.getDate(),
                 purchase.getPaymentMethod(),
@@ -29,7 +31,7 @@ class PurchaseService(@Autowired val purchaseRepository: PurchaseRepository,@Aut
             val list: MutableList<PurchasesProducts> = ArrayList()
             for(p in purchase.getProducts()){
                 println(p.getIdProduct())
-                list.add(PurchasesProducts(0,purchaseResponse.idPurchase,p.getIdProduct(),p.getQuantity(),p.getTotal(),p.getStatus()));
+                list.add(PurchasesProducts(UUID.randomUUID(),purchaseResponse.idPurchase,p.getIdProduct(),p.getQuantity(),p.getTotal(),p.getStatus()));
             }
             savePurchasesByProducts(list);
         }

@@ -1,12 +1,11 @@
 package com.tul.ecommerce.domain.repository
 
-import com.tul.ecommerce.persitence.entity.Category
-import com.tul.ecommerce.persitence.entity.Unit
+import com.tul.ecommerce.persitence.entity.UnitE
 import java.util.*
 
 interface UnitRepository {
-    fun getAll(): List<Unit>;
-    fun save(unit: Unit): Unit;
-    fun findById(id: Int): Optional<Unit>;
-    fun deleteById(id: Int);
+    fun getAll(): List<UnitE>;
+    fun save(unit: UnitE): UnitE;
+    fun findById(id: UUID): Optional<UnitE>;
+    fun deleteById(id: UUID);
 }

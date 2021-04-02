@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping("/category")
@@ -16,6 +17,11 @@ class CategoryController(@Autowired private var serviceCategory: CategoryService
     @GetMapping("/")
     fun getAll(): ResponseEntity<List<Category>> {
         return ResponseEntity(serviceCategory?.getAll(),HttpStatus.OK);
+    }
+
+    @GetMapping("/id/{idCategory}")
+    fun getCategory(@PathVariable("idCategory") idCategory:UUID): ResponseEntity<Optional<Category>> {
+        return ResponseEntity(serviceCategory.findCategory(idCategory),HttpStatus.OK);
     }
 
     @PostMapping("/")
